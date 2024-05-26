@@ -5,8 +5,7 @@ import json
 
 API_ENDPOINT = "http://localhost:3000"
 
-# pylint: disable=unused-argument
-def test_script_end_to_end(start_server):
+def test_script_end_to_end(start_server): # pylint: disable=unused-argument
     """Test the qbe_app.py script to ensure server is running."""
     response = requests.get(API_ENDPOINT, timeout=1)
     assert response.status_code == 200
@@ -44,7 +43,6 @@ def test_validate_endpoint(client, get_bad_json_requests, get_good_json_requests
     response = client.post("/validate", json=good_json)
     assert response.status_code == 200
 
-# Test get factors
 def test_getfactors_endpoint(
     client, get_bad_json_requests, get_good_json_requests
 ):
