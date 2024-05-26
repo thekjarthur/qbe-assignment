@@ -10,7 +10,7 @@ Repo documenating data manipulation, version control and API development.
 6. Install coverage `pip install coverage`.
 
 # Running the project
-1.
+1. Activate the virtual environment. For Windows, run `.venv/Scripts/activate` for Linux/Max, run `source .venv/bin/activate`.
 2. To start the server, run `python qbe_app.py` in the main directory.
 3. To run test cases, run `poetry run pytest`.
 
