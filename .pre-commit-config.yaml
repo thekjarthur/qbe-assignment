@@ -35,4 +35,4 @@ repos:
         pass_filenames: false
         stages: [commit]
         types: [python]
-        args: ["--cov", "--cov-config=.coveragerc", "--cov-report=term", "--cov-report=term-missing", "--cov-fail-under=85"]
+        args: ["--cov", "--cov-config=.coveragerc", "--cov-report=term-missing", "--cov-fail-under=85"]

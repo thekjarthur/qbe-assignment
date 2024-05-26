@@ -31,3 +31,7 @@ jobs:
 
       - name: Run tests
         run: poetry run pre-commit run --all-files
+
+      - name: Clean up coverage files
+        run: |
+          coverage erase

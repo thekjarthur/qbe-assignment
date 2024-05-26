@@ -16,15 +16,14 @@ def create_app(config=None):
     assert len(data_df) == len(
         data_df[["var_name", "category"]].drop_duplicates()
     ), "Duplicated records present"
-    ACCEPTABLE_VAR_NAMES = list(
+    acceptable_var_names = list(
         data_df["var_name"].unique()
     )  # or manually ["country", "age_group"]
-    
+
     @app.route("/", methods=["GET"])
     def index():
         """Checks the server running state"""
         return "Server is running"
-
 
     @app.route("/validate", methods=["POST"])
     def validate():
@@ -74,7 +73,7 @@ def create_app(config=None):
             category = obj.get("category")
 
             # Checking var_name is valid
-            if var_name not in ACCEPTABLE_VAR_NAMES:
+            if var_name not in acceptable_var_names:
                 return jsonify({"error": f"Invalid var_name: {var_name}."}), 400
 
             # Checking category, var_name matches
@@ -85,13 +84,15 @@ def create_app(config=None):
                 return (
                     jsonify(
                         {
-                            "error": f"Invalid pair of var_name: {var_name} and category: {category}."
+                            "error": (
+                                f"Invalid pair of var_name: {var_name} "
+                                f"and category: {category}."
+                            )
                         }
                     ),
                     400,
                 )
         return jsonify({"message": "Successfully validated"}), 200
-
 
     @app.route("/get_factors", methods=["POST"])
     def get_factors():
@@ -131,10 +132,10 @@ def create_app(config=None):
             ]
             results_list.append(filtered_df.iloc[0].to_dict())
         return jsonify({"results": results_list}), 200
-    
+
     return app
 
 
 if __name__ == "__main__":
-    app = create_app()
-    app.run(port=3000, debug=True)
+    qbe_app = create_app()
+    qbe_app.run(port=3000, debug=True)
