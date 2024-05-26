@@ -5,7 +5,7 @@ import pandas as pd
 app = Flask(__name__)
 
 data_df = pd.read_csv("data.csv")
-ACCEPTABLE_VAR_NAMES = ["country", "age"] # data_df["var_name"].unique().to_list()
+ACCEPTABLE_VAR_NAMES = ["country", "age_group"] # data_df["var_name"].unique().to_list()
 
 @app.route('/validate', methods=['POST'])
 def validate():
