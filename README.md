@@ -1,5 +1,5 @@
 # QBE Lead MLE Take Home Assignment
-Repo documenating data manipulation, version control and API development. 
+Repo documenating data manipulation, version control and API development.
 
 # Setting up the project
 1. Clone this repository
@@ -9,6 +9,6 @@ Repo documenating data manipulation, version control and API development.
 5. Install packages: `poetry install`.
 
 # Git Commands and Workflow
-My choice IDE is VSCODE with the following extensions: RainbowCSV, isort, Pylance.  I created successive branches using `git branch branchname`. I use the VSCODE Source Control tool, rather than the `git status`, `git add` and `git commit -m commitmessage` sequences since it's easier to spot errors visually, and I can see the differences more visually. 
+My choice IDE is VSCODE with the following extensions: RainbowCSV, isort, Pylance.  I created successive branches using `git branch branchname`. I use the VSCODE Source Control tool, rather than the `git status`, `git add` and `git commit -m commitmessage` sequences since it's easier to spot errors visually, and I can see the differences more visually.
 
 At each stage, I would run the server using `python app.py` and test it using Postman to make sure it was all running correctly.
