@@ -27,7 +27,7 @@ def validate():
     "country" or "age". Then it checks that the combination of var_name and
     category exists in the reference data.csv.
 
-    The funciton expects a JSON payload with structure:
+    The function expects a JSON payload with structure:
     {
         "data": [
             {
@@ -94,7 +94,7 @@ def get_factors():
     csv. It first validates the request, before retrieving relevant
     factors.
 
-    The funciton expects a JSON payload with structure:
+    The function expects a JSON payload with structure:
     {
         "data": [
             {
