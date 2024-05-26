@@ -12,7 +12,7 @@ Repo documenating data manipulation, version control and API development.
 # Running the project
 1. Activate the virtual environment. For Windows, run `.venv/Scripts/activate` for Linux/Max, run `source .venv/bin/activate`.
 2. To start the server, run `python qbe_app.py` in the main directory.
-3. To run test cases, run `poetry run pytest` to run test cases. 
+3. To run test cases, run `poetry run pytest` to run test cases.
 4. To test the server manually, you can use [Postman](https://www.postman.com/). Create a new collection and a new request. Set the address to `http://localhost:3000`, and the request type to `POST`. In the `body` section, change the payload type to `raw` and enter your json data.
 
 # Development Notes
