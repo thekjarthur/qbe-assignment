@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "qbe-assignment"
+version = "0.1.0"
+description = "Packages for take home assignment"
+authors = ["thekjarthur <kkarthur@mit.edu>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+flask = "^3.0.3"
+pandas = "^2.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
