@@ -9,12 +9,12 @@ Repo documenating data manipulation, version control and API development.
 5. Install packages: `poetry install`.
 
 # Running the project
-1. To start the server, run `python app.py` in the main directory
-2. To run test cases, run `python app.py` and `poetry run pytest`
+1. To start the server, run `python qbe_app.py` in the main directory
+2. To run test cases, run `python qbe_app.py` and `poetry run pytest`
 
 # Development Notes
 My usual IDE is VSCODE.  I created successive branches using `git branch branchname`. I used the VSCODE Source Control tool, rather than the `git status`, `git add` and `git commit -m commitmessage` sequences since it's easier to spot errors visually, and I can see the differences more visually.
 
-At each stage, I would run the server using `python app.py` and test it using Postman to make sure it was all running correctly. I used breakpoints and pdb where needed to ensure correct responses.
+At each stage, I would run the server using `python qbe_app.py` and test it using Postman to make sure it was all running correctly. I used breakpoints and pdb where needed to ensure correct responses.
 
 I installed pre-commits and setup a few checks for import sorting, and code quality. Those can be ran manually using `pre-commit run --all-files`, and is automatically run on the Github Actions.

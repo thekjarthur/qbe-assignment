@@ -1,10 +1,25 @@
-"""Test fixtures for test_app.py"""
+"""Test fixtures for test_qbe_app.py"""
 import os
 import platform
 import time
 from subprocess import Popen
 
 import pytest
+
+from qbe_app import create_app
+
+
+@pytest.fixture
+def app():
+    """Fixture to create an app"""
+    qbe_app = create_app({"TESTING": True})
+    return qbe_app
+
+
+@pytest.fixture
+def client(app):  # pylint: disable=redefined-outer-name
+    """Fixture to create client with test features"""
+    return app.test_client()
 
 
 @pytest.fixture(scope="module")
@@ -18,7 +33,7 @@ def start_server():
     else:
         raise RuntimeError(f"Unsupported platform: {system_platform}")
 
-    with Popen([venv_path, "app.py"]) as process:
+    with Popen([venv_path, "qbe_app.py"]) as process:
         time.sleep(2)
         yield True
         process.terminate()
@@ -34,7 +49,7 @@ def get_bad_json_requests():
             "Invalid json. Must contain var_name and category fields.",
         ),
         (
-            {"var_name": "coutnry", "cat": "USA"},
+            {"var_name": "country", "cat": "USA"},
             "Invalid json. Must contain var_name and category fields.",
         ),
         ({"var_name": "american", "category": "USA"}, "Invalid var_name: american."),
