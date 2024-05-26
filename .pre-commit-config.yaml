@@ -1,0 +1,30 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+-   repo: https://github.com/psf/black
+    rev: 22.10.0
+    hooks:
+    -   id: black
+        name: Black
+-   repo: https://github.com/PyCQA/isort
+    rev: 5.12.0
+    hooks:
+    -   id: isort
+        args: ["--profile", "black", "--filter-files"]
+        name: Isort
+-   repo: https://github.com/PyCQA/autoflake
+    rev: v2.2.1
+    hooks:
+    -   id: autoflake
+        name: Autoflake
+        args: ["--in-place", "--expand-star-imports", "--remove-duplicate-keys"] # , "--remove-unused-variables"]
+-   repo: local
+    hooks:
+    -   id: pylint
+        name: Pylint
+        entry: pylint
+        language: system
+        types: [python]
