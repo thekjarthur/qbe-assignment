@@ -1,7 +1,7 @@
 """Main script to run API server"""
 import pandas as pd
 from flask import Flask, jsonify, request
-
+import false_package
 
 def create_app(config=None):
     """Wrapper to create flask app"""
