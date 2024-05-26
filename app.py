@@ -10,6 +10,11 @@ data_df = pd.read_csv("data.csv")
 assert len(data_df) == len(data_df[["var_name","category"]].drop_duplicates()), "Duplicated records present"
 ACCEPTABLE_VAR_NAMES = list(data_df["var_name"].unique()) # or manually ["country", "age_group"]
 
+@app.route('/', methods=['GET'])
+def index():
+    """Checks the server running state"""
+    return 'Server is running'
+
 @app.route('/validate', methods=['POST'])
 def validate():
     """Validates JSON request data. It checks that the var_name is either 
@@ -38,10 +43,16 @@ def validate():
 
     if not req_data or 'data' not in req_data:
         return jsonify({
-            "error": "Invalid request. Must contain data json."
+            "error": "Invalid request. Must contain json with data key."
         }), 400
     
     for obj in req_data["data"]:
+        # Checking var_name is valid
+        if "var_name" not in obj or "category" not in obj:
+            return jsonify({
+                "error": f"Invalid json. Must contain var_name and category fields."
+            }), 400
+        
         var_name = obj.get("var_name")
         category = obj.get("category")
 
