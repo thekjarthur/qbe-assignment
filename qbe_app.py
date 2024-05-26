@@ -7,6 +7,8 @@ def create_app(config=None):
     """Wrapper to create flask app"""
     app = Flask(__name__)
 
+    test = test+1
+
     if config is not None:
         app.config.from_mapping(config)
 
