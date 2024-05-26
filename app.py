@@ -56,5 +56,48 @@ def validate():
             }), 400
     return jsonify({"message": "Successfully validated"}), 200
 
+
+@app.route('/get_factors', methods=['POST'])
+def get_factors():
+    """Retrieves factors based var_name and category from reference
+    csv. It first validates the request, before retrieving relevant
+    factors.
+
+    The funciton expects a JSON payload with structure:
+    {
+        "data": [
+            {
+                "var_name": "country",
+                "category": "USA"
+            },
+            ...
+        ]
+    }
+
+    Returns:
+        - 400 Bad Request if it fails validation checks.
+        - 200 OK with the JSON of factors in "results".
+    """
+    req_data = request.get_json()
+
+    validation_response = validate()
+    if validation_response[1] != 200:
+        return validation_response
+    
+    results_list = []
+    for obj in req_data["data"]:
+        var_name = obj.get("var_name")
+        category = obj.get("category")
+
+        # filtered_df is guaranteed len = 1
+        filtered_df = data_df[(data_df["var_name"] == var_name) & (data_df["category"] == category)]
+        results_list.append(
+            filtered_df.iloc[0].to_dict()
+        )
+    return jsonify({
+        "results": results_list
+    }), 200
+        
+
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
