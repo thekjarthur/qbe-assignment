@@ -5,7 +5,10 @@ import pandas as pd
 app = Flask(__name__)
 
 data_df = pd.read_csv("data.csv")
-ACCEPTABLE_VAR_NAMES = ["country", "age_group"] # data_df["var_name"].unique().to_list()
+
+# Check that data_df is unique
+assert len(data_df) == len(data_df[["var_name","category"]].drop_duplicates()), "Duplicated records present"
+ACCEPTABLE_VAR_NAMES = list(data_df["var_name"].unique()) # or manually ["country", "age_group"]
 
 @app.route('/validate', methods=['POST'])
 def validate():
