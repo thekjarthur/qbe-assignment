@@ -28,3 +28,11 @@ repos:
         entry: pylint
         language: system
         types: [python]
+    -   id: pytest-cov
+        name: Coverage
+        entry: pytest
+        language: system
+        pass_filenames: false
+        stages: [commit]
+        types: [python]
+        args: ["--cov", "--cov-report=term", "--cov-report=term-missing", "--cov-fail-under=85"]
